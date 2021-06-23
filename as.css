@@ -1,0 +1,69 @@
+nav {background: rgba(0,0,0,0.7);}
+#gototop{
+	position:fixed;
+	right:2px;
+	bottom:40px;
+	cursor:pointer;
+	opacity:.6;
+	z-index: 3;
+}
+#gototop img {
+	width: 40px;
+}
+#line-icon{
+    position:fixed;
+	cursor:pointer;
+	opacity:0.6;
+    right:5px;
+}
+#line-icon img {
+	width: 34px;
+}
+.bgimage {
+  background-image: url(img/B_Beggar_1024x683.jpg);
+  background-attachment: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-position: center;
+  background-size: cover;
+  z-index: -999;
+}
+.btn:focus,.btn:active:focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn.active.focus {outline: none;}
+.textshadow{
+text-shadow: -1px -1px 1px #FFFFE0, 1px 1px 1px #8B4513;
+color: Orange;
+} 
+
+@media (max-width: 1200px) {
+  legend {font-size: calc(1.275rem + 0.3vw);}
+  h1,.h1 {font-size: calc(1.375rem + 1.5vw);}
+  h2,.h2 {font-size: calc(1.325rem + 0.9vw);}
+  h3,.h3 {font-size: calc(1.3rem + 0.6vw);}
+  h4,.h4 {font-size: calc(1.275rem + 0.3vw);}
+  .display-1 {font-size: calc(1.725rem + 5.7vw);}
+  .display-2 {font-size: calc(1.675rem + 5.1vw);}
+  .display-3 {font-size: calc(1.575rem + 3.9vw);}
+  .display-4 {font-size: calc(1.475rem + 2.7vw);}
+  .close {font-size: calc(1.275rem + 0.3vw);}
+}
+
+.blink {
+    animation-duration: 1s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+	margin-top: 250px;
+	text-align:center;
+	color: #fff;
+}
+@keyframes blink {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
