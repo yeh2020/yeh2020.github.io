@@ -1,25 +1,25 @@
 $(document).ready(function() {
-	window.onload=function(){
-		if(document.documentElement.scrollHeight <= document.documentElement.clientHeight) {
-			bodyTag = document.getElementsByTagName('body')[0];
-			bodyTag.style.height = document.documentElement.clientWidth / screen.width * screen.height + 'px';
-		}
-		setTimeout(function() {
-			window.scrollTo(0, 1)
-		}, 0);
-	};
-	$("#gototop").hide();
-	$(window).scroll(function () {
-		if ($(window).scrollTop() > 100) {
-			$("#gototop").fadeIn(1500);
-		}else {
-			$("#gototop").fadeOut(1000);
-		}
-	});
-	$("#gototop").click(function () {
-		$('body,html').animate({ scrollTop: 0 }, 1000);
-		return false;
-	});
+  
+    if(document.documentElement.scrollHeight <= document.documentElement.clientHeight) {
+      bodyTag = document.getElementsByTagName('body')[0];
+      bodyTag.style.height = document.documentElement.clientWidth / screen.width * screen.height + 'px';
+    }
+    setTimeout(function() {
+      window.scrollTo(0, 1)
+      }, 0);
+    
+    $("#gototop").hide();
+    $(window).scroll(function () {
+      if ($(window).scrollTop() > 100) {
+        $("#gototop").fadeIn(1500);
+      }else {
+         $("#gototop").fadeOut(1000);
+       }
+    });
+    $("#gototop").click(function () {
+      $('body,html').animate({ scrollTop: 0 }, 1000);
+      return false;
+    });
 	$("#1page").hide();
 	$("#1page").slideDown(2000);
 	$("#2page").hide();
