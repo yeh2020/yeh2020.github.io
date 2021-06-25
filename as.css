@@ -22,6 +22,7 @@ nav {background: rgba(0,0,0,0.7);}
 .bgimage {
   background-image: url(img/B_Beggar_1024x683.jpg);
   background-attachment: fixed;
+  position:fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -37,16 +38,31 @@ color: Orange;
 } 
 
 @media (max-width: 1200px) {
-  legend {font-size: calc(1.275rem + 0.3vw);}
-  h1,.h1 {font-size: calc(1.375rem + 1.5vw);}
-  h2,.h2 {font-size: calc(1.325rem + 0.9vw);}
-  h3,.h3 {font-size: calc(1.3rem + 0.6vw);}
-  h4,.h4 {font-size: calc(1.275rem + 0.3vw);}
-  .display-1 {font-size: calc(1.725rem + 5.7vw);}
-  .display-2 {font-size: calc(1.675rem + 5.1vw);}
-  .display-3 {font-size: calc(1.575rem + 3.9vw);}
-  .display-4 {font-size: calc(1.475rem + 2.7vw);}
-  .close {font-size: calc(1.275rem + 0.3vw);}
+  h1,.h1 {font-size: calc(1.8rem + 1.5vw);margin-top: 250px;}
+}
+@media (max-width: 1025px) {
+  h1,.h1 {font-size: calc(4.2rem + 1.5vw);margin-top: 700px;}
+}
+@media (max-width: 769px) {
+  h1,.h1 {font-size: calc(3.5rem + 1.5vw);margin-top: 500px;}
+}
+@media (max-width: 541px) {
+  h1,.h1 {font-size: calc(2.6rem + 1.5vw);margin-top: 360px;}
+}
+@media (max-width: 415px) {
+  h1,.h1 {font-size: calc(2.2rem + 1.5vw);margin-top: 370px;}
+}
+@media (max-width: 376px) {
+  h1,.h1 {font-size: calc(2.0rem + 1.5vw);margin-top: 330px;}
+}
+@media (max-width: 361px) {
+  h1,.h1 {font-size: calc(1.9rem + 1.5vw);margin-top: 320px;}
+}
+@media (max-width: 321px) {
+  h1,.h1 {font-size: calc(1.7rem + 1.5vw);margin-top: 280px;}
+}
+@media (max-width: 281px) {
+  h1,.h1 {font-size: calc(1.5rem + 1.5vw);margin-top: 340px;}
 }
 
 .blink {
@@ -55,8 +71,8 @@ color: Orange;
     animation-iteration-count: infinite;
     animation-direction: alternate;
     animation-timing-function: ease-in-out;
-	margin-top: 250px;
-	text-align:center;
+	
+	text-align: center;
 	color: #fff;
 }
 @keyframes blink {
