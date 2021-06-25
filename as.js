@@ -1,16 +1,16 @@
 $(document).ready(function() {
-    $("#gototop").hide();
-    $(window).scroll(function () {
-      if ($(window).scrollTop() > 100) {
-        $("#gototop").fadeIn(1500);
-      }else {
-         $("#gototop").fadeOut(1000);
-       }
-    });
-    $("#gototop").click(function () {
-      $('body,html').animate({ scrollTop: 0 }, 1000);
-      return false;
-    });
+	$("#gototop").hide();
+	$(window).scroll(function () {
+		if ($(window).scrollTop() > 100) {
+			$("#gototop").fadeIn(1500);
+		}else {
+			$("#gototop").fadeOut(1000);
+		}
+	});
+	$("#gototop").click(function () {
+		$('body,html').animate({ scrollTop: 0 }, 1000);
+		return false;
+	});
 	$("#1page").hide();
 	$("#1page").slideDown(2000);
 	$("#2page").hide();

@@ -1,23 +1,23 @@
 nav {background: rgba(0,0,0,0.7);}
 #gototop{
-  position:fixed;
-  right:2px;
-  bottom:40px;
-  cursor:pointer;
-  opacity:.6;
-  z-index: 3;
+	position:fixed;
+	right:2px;
+	bottom:40px;
+	cursor:pointer;
+	opacity:.6;
+	z-index: 3;
 }
 #gototop img {
-  width: 40px;
+	width: 40px;
 }
 #line-icon{
-  position:fixed;
-  cursor:pointer;
-  opacity:0.6;
-  right:5px;
+    position:fixed;
+	cursor:pointer;
+	opacity:0.6;
+    right:5px;
 }
 #line-icon img {
-  width: 34px;
+	width: 34px;
 }
 .bgimage {
   background-image: url(img/B_Beggar_1024x683.jpg);
@@ -33,9 +33,10 @@ nav {background: rgba(0,0,0,0.7);}
 }
 .btn:focus,.btn:active:focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn.active.focus {outline: none;}
 .textshadow{
-  text-shadow: -1px -1px 1px #FFFFE0, 1px 1px 1px #8B4513;
-  color: Orange;
+text-shadow: -1px -1px 1px #FFFFE0, 1px 1px 1px #8B4513;
+color: Orange;
 } 
+
 @media (max-width: 1200px) {
   h1,.h1 {font-size: calc(1.8rem + 1.5vw);margin-top: 250px;}
 }
@@ -63,16 +64,21 @@ nav {background: rgba(0,0,0,0.7);}
 @media (max-width: 281px) {
   h1,.h1 {font-size: calc(1.5rem + 1.5vw);margin-top: 340px;}
 }
+
 .blink {
-  animation-duration: 1s;
-  animation-name: blink;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  animation-timing-function: ease-in-out;
-  text-align: center;
-  color: #fff;
+    animation-duration: 1s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+	text-align: center;
+	color: #fff;
 }
 @keyframes blink {
-  from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
