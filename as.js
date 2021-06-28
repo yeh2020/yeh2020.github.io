@@ -78,3 +78,44 @@ $(window).scroll(function() {
 		});
 	}
 });
+
+// Pi Network API
+const PiNetworkClient = window.PiNetwork;
+const scopes = ['username', 'payments'];
+var user;
+async function init(){
+	try {
+		function onOpenPaymentFound(payment) {};
+		Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
+			console.log('Hello ${auth.user.username}');
+			user = auth.user.username;
+			document.getElementById('vistuser').innerHTML = auth.user.username;
+		})
+	} catch (err) {
+		alert(err);
+	}
+}
+
+async function payment() {
+	try {
+		const payment = Pi.createPayment({
+			amount: 0.01, 
+			reason: "1 test-pi for gaming", 
+			metadata: { orderId: 1234, itemIds: [11, 42, 314] },
+		}, 
+		{
+            onPaymentIdReceived: onPaymentIdReceived,
+            onTransactionSubmitted: onTransactionSubmitted,
+            onPaymentCancelled: onPaymentCancelled,
+            onPaymentError: onPaymentError,
+		});
+	}catch(err){
+		alert(err);
+	}
+}
+
+function onPaymentIdReceived(paymentId){}
+function onTransactionSubmitted(pid,txid){}
+function onPaymentCancelled(){}
+function onPaymentError(){}
+// Pi.authenticate(scopes: Array<string>, onIncompletePaymentFound: Function<PaymentDTO>): Promise<PiAuth>
