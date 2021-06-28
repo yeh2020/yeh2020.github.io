@@ -108,8 +108,8 @@ async function payment() {
 	}catch(err){
 		alert(err);
 	}
-}
 function onPaymentIdReceived(){}
 function onTransactionSubmitted(){}
 function onPaymentCancelled(){}
 function onPaymentError(){}
+}
