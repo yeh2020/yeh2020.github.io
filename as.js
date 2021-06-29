@@ -82,13 +82,20 @@ $(window).scroll(function() {
 // Pi Network API
 const scopes = ['username', 'payments'];
 var user,amount;
-function version(){ Pi.init({version:"2.0"}) }
-function onOpenPaymentFound(payment) {};
-Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
-	console.log('Hello ${auth.user.username}');
-	user = auth.user.username;
-	document.getElementById('showuser').innerHTML = auth.user.username;
-})
+function e(){Pi.init({version:"2.0"})}
+async function init(){
+	try {
+		e();
+		function onOpenPaymentFound(payment) {};
+		Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
+			console.log(`Hello ${auth.user.username}`);
+			user = auth.user.username;
+			document.getElementById('showuser').innerHTML = auth.user.username;
+		})
+	} catch (err) {
+		alert(err);
+	}
+}
 
 function payment() {
 	try {
