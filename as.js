@@ -84,21 +84,12 @@ $(window).scroll(function() {
 const scopes = ['username', 'payments'];
 var user,amount;
 function version(){ Pi.init({version:"2.0"}) }
-async function init(){
-	try {
-			version();
-			function onOpenPaymentFound(payment) {
-                
-			};
-			Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
-                console.log(`Hello ${auth.user.username}`);
-                user = auth.user.username;
-                document.getElementById('showuser').innerHTML = auth.user.username;
-			})
-	} catch (err) {
-		alert(err);
-	}
-}
+function onOpenPaymentFound(payment) {};
+Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
+	console.log(`Hello ${auth.user.username}`);
+	user = auth.user.username;
+	document.getElementById('showuser').innerHTML = auth.user.username;
+})
 
 async function payment() {
 	try {
