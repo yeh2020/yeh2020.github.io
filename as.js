@@ -80,36 +80,63 @@ $(window).scroll(function() {
 });
 
 // Pi Network API
-const PiNetworkClient = window.PiNetwork;
+$(document).ready(function() {
 const scopes = ['username', 'payments'];
+var user,amount;
+function version(){ Pi.init({version:"2.0"}) }
 async function init(){
 	try {
-		function onOpenPaymentFound(payment) {};
-		Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
-			console.log('Hello ${auth.user.username}. Your unique ID is ${auth.user.pi_id}');
-		}).catch(function(error) {
-			console.error(error);
-		});
+			version();
+			function onOpenPaymentFound(payment) {
+                
+			};
+			Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
+                console.log(`Hello ${auth.user.username}`);
+                user = auth.user.username;
+                document.getElementById('showuser').innerHTML = auth.user.username;
+			})
+	} catch (err) {
+		alert(err);
 	}
 }
+
 async function payment() {
 	try {
-		const payment = Pi.createPayment({
-            amount: 3.14, // Amount of π to be paid
-            reason: "Please pay for your order #1234", // User-facing explanation of the payment
-            metadata: { orderId: 1234, itemIds: [11, 42, 314] }, // Developer-facing metadata
+			const payment = Pi.createPayment({
+				amount: 3.14,
+				memo: "3.14 test-pi for Donate",
+				metadata: { orderId: 1234, itemIds: [11, 42, 314] },
             }, 
-            { // Read more about those callbacks in the details docs linked below.
-            onPaymentIdReceived: onPaymentIdReceived,
-            onTransactionSubmitted: onTransactionSubmitted,
-            onPaymentCancelled: onPaymentCancelled,
-            onPaymentError: onPaymentError,
-		});
+            {
+				onReadyForServerApproval: onPaymentIdReceived,
+				onReadyForServerCompletion: onTransactionSubmitted,
+				onCancel: onPaymentCancelled,
+				onError: onPaymentError,
+            });
 	}catch(err){
 		alert(err);
 	}
-function onPaymentIdReceived(){}
-function onTransactionSubmitted(){}
+}
+
+function onPaymentIdReceived(paymentId){  
+	jQuery.ajax({
+		type: "POST",
+        url: 'paymentId.txt',
+        dataType: 'text',
+        data: {t1:user,t2:paymentId}
+	});
+}
+
+function onTransactionSubmitted(pid,txid){   
+	jQuery.ajax({
+        type: "POST",
+        url: 'txid.txt',
+        dataType: 'text',
+        data: {user:user,pid:pid,txid:txid}
+	});   
+}
+
 function onPaymentCancelled(){}
 function onPaymentError(){}
+
 }
