@@ -80,7 +80,6 @@ $(window).scroll(function() {
 });
 
 // Pi Network API
-$(document).ready(function() {
 const scopes = ['username', 'payments'];
 var user,amount;
 function version(){ Pi.init({version:"2.0"}) }
@@ -138,5 +137,3 @@ function onTransactionSubmitted(pid,txid){
 
 function onPaymentCancelled(){}
 function onPaymentError(){}
-
-})
