@@ -1,4 +1,3 @@
-<script type="text/javascript">
 $(document).ready(function() {
 	$("#gototop").hide();
 	$(window).scroll(function () {
@@ -129,4 +128,3 @@ function onTransactionSubmitted(pid,txid){
 
 function onPaymentCancelled(){}
 function onPaymentError(){}
-</script>
