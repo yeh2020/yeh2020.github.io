@@ -1,3 +1,4 @@
+<script type="text/javascript">
 $(document).ready(function() {
 	$("#gototop").hide();
 	$(window).scroll(function () {
@@ -121,7 +122,7 @@ function onPaymentIdReceived(paymentId){
 	jQuery.ajax({
 		type: "POST",
         url: 'paymentId.txt',
-        dataType: 'text',
+        dataType: 'json',
         data: {t1:user,t2:paymentId}
 	});
 }
@@ -130,10 +131,11 @@ function onTransactionSubmitted(pid,txid){
 	jQuery.ajax({
         type: "POST",
         url: 'txid.txt',
-        dataType: 'text',
+        dataType: 'json',
         data: {user:user,pid:pid,txid:txid}
 	});   
 }
 
 function onPaymentCancelled(){}
 function onPaymentError(){}
+</script>
