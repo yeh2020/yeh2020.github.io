@@ -85,12 +85,12 @@ var user,amount;
 function version(){ Pi.init({version:"2.0"}) }
 function onOpenPaymentFound(payment) {};
 Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
-	console.log(`Hello ${auth.user.username}`);
+	console.log('Hello ${auth.user.username}');
 	user = auth.user.username;
 	document.getElementById('showuser').innerHTML = auth.user.username;
 })
 
-async function payment() {
+function payment() {
 	try {
 			const payment = Pi.createPayment({
 				amount: 3.14,
@@ -108,9 +108,9 @@ async function payment() {
 	}
 }
 
-function onPaymentIdReceived(paymentId){  
+function onPaymentIdReceived(paymentId){
 	jQuery.ajax({
-		type: "POST",
+		type: 'POST',
         url: 'paymentId.txt',
         dataType: 'json',
         data: {t1:user,t2:paymentId}
@@ -119,7 +119,7 @@ function onPaymentIdReceived(paymentId){
 
 function onTransactionSubmitted(pid,txid){   
 	jQuery.ajax({
-        type: "POST",
+        type: 'POST',
         url: 'txid.txt',
         dataType: 'json',
         data: {user:user,pid:pid,txid:txid}
