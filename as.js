@@ -139,4 +139,4 @@ function onTransactionSubmitted(pid,txid){
 function onPaymentCancelled(){}
 function onPaymentError(){}
 
-}
+})
