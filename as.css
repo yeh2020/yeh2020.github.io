@@ -1,23 +1,9 @@
 nav {background: rgba(0,0,0,0.7);}
-#gototop{
-	position:fixed;
-	right:2px;
-	bottom:40px;
-	cursor:pointer;
-	opacity:.6;
-	z-index: 3;
-}
-#gototop img {
-	width: 40px;
-}
-#line-icon{
-    position:fixed;
-	cursor:pointer;
-	opacity:0.6;
-    right:5px;
-}
-#line-icon img {
-	width: 34px;
+#showuser{
+  position:fixed;
+  top: 80px;
+  text-align: center;
+  color: #F00078;
 }
 .bgimage {
   background-image: url(img/B_Beggar_1024x683.jpg);
