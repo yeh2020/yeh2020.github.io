@@ -1,4 +1,7 @@
 nav {background: rgba(0,0,0,0.7);}
+#showuser{
+  color: #F00078;
+}
 .bgimage {
   background-image: url(img/B_Beggar_1024x683.jpg);
   background-attachment: fixed;
