@@ -9,7 +9,7 @@ async function init(){
 			console.log(`Hello ${auth.user.username}`);
 			user = auth.user.username;
 			document.getElementById('showuser').innerHTML = auth.user.username;
-			alert(user);
+			alert('user');
 		})
 	} catch (err) {
 		alert(err);
