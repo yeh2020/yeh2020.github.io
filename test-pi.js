@@ -8,8 +8,8 @@ async function init(){
 		Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
 			console.log(`Hello ${auth.user.username}`);
 			user = auth.user.username;
-			const showuser = document.querySelector('.showuser');
-			showuser.innerHTML = auth.user.username;
+			document.getElementById('showuser').innerHTML = auth.user.username;
+			alert(user);
 		})
 	} catch (err) {
 		alert(err);
