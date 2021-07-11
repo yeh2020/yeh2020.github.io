@@ -36,15 +36,6 @@ function payment() {
 
 function onPaymentIdReceived(paymentId){
 	$.ajax({
-		type: 'PUT',		
-		url: 'https://api.minepi.com/v2/payments/' + {paymentID} + '/approv',
-		Authorization: ${{ secrets.PI_API_KEY }},
-		dataType: 'json',
-		memo: 'you will pay pi coin', 
-		to_address:'GCG3PKMJ6GZAYNB33ZLSCD2OROSMFROE4TFRZGA2R7GBYN7DJQ4H3GT3',//federal boat
-		status: {developer_approved: true},
-	});
-	$.ajax({
 		type: 'POST',
 		url: 'paymentId.txt',
 		dataType: 'json',
@@ -53,14 +44,6 @@ function onPaymentIdReceived(paymentId){
 }
 
 function onTransactionSubmitted(pid,txid){
-	$.ajax({
-		type: 'PUT',		
-		url: 'https://api.minepi.com/v2/payments/' + {paymentID} + '/complete',
-		Authorization: ${{ secrets.PI_API_KEY }},
-		dataType: 'json',
-		memo: 'Payment successful', 
-		status: {developer_complete: true},
-	});
 	$.ajax({
 		type: 'POST',
 		url: 'txid.txt',
