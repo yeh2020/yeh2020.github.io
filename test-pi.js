@@ -36,7 +36,7 @@ function payment() {
 
 function onPaymentIdReceived(paymentId){
 	$.ajax({
-		type: 'POST',		
+		type: 'PUT',		
 		url: 'https://api.minepi.com/v2/payments/' + {paymentID} + '/approv',
 		Authorization: ${{ secrets.PI_API_KEY }},
 		dataType: 'json',
@@ -54,7 +54,7 @@ function onPaymentIdReceived(paymentId){
 
 function onTransactionSubmitted(pid,txid){
 	$.ajax({
-		type: 'post',		
+		type: 'PUT',		
 		url: 'https://api.minepi.com/v2/payments/' + {paymentID} + '/complete',
 		Authorization: ${{ secrets.PI_API_KEY }},
 		dataType: 'json',
