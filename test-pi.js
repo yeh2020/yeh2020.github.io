@@ -2,7 +2,6 @@
 
 const scopes = ['username', 'payments'];
 const Base = 'https://api.minepi.com/v2'
-const AuthServer = 'Authorization:key'+{PI_SERVER_API_KEY}
 var user,amount;
 async function init(){
 	try {
@@ -10,9 +9,8 @@ async function init(){
 		Pi.authenticate(scopes, onOpenPaymentFound).then(function(auth){
 			console.log(`Hello ${auth.user.username}`);
 			user = auth.user.username;
-			document.getElementById('showuser').innerHTML = auth.user.username;
 			const SU = document.getElementById('showuser');
-			SU.innerHTML = auth.user.username;
+			SU.innerHTML = auth.user.username + '：' + auth.user.uid;
 		})
 	} catch (err) {
 		alert(err);
@@ -96,48 +94,3 @@ function ServerComplet(){
 		status: {developer_complete: true},
 	});
 }
-
-
-
-
-
-
-
-
-
-function ServerRefuse(){
-	console.log("請透過 Pi Browser 瀏覽器使用 Pi 支付");
-	init();
-}
-
-
-github_token: ${{ secrets.MY_GIT_TOKEN }}
-
-
-// time
-function ChangeDateFormat(jsondate) {  
-	jsondate = jsondate.replace("/Date(", "").replace(")/", "");  
-	if (jsondate.indexOf("+") > 0) { 
-		jsondate = jsondate.substring(0, jsondate.indexOf("+"));  
-	}   
-	else if (jsondate.indexOf("-") > 0) {  
-		jsondate = jsondate.substring(0, jsondate.indexOf("-"));   
-	}  
-  
-var date = new Date(parseInt(jsondate, 10)); 
-var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;  
-var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();  
-return datefull = date.getFullYear() + "-" + month + "-" + currentDate; 
-
-
-
-
-
-
-
-	if (!status.transaction_verified && !status.developer_completed || !==200) {onPaymentError();}
-	if (status.cancelled || status.user_cancelled) {onPaymentCancelled();}
-
-
-
-
