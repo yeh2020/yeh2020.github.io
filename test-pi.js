@@ -12,7 +12,7 @@ async function init(){
 			user = auth.user.username;
 			document.getElementById('showuser').innerHTML = auth.user.username;
 			const SU = document.getElementById('showuser');
-			SU.innerHTML = auth.user.username + '：' + auth.user.uid;
+			SU.innerHTML = auth.user.username;
 		})
 	} catch (err) {
 		alert(err);
