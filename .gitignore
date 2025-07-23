@@ -1,0 +1,8 @@
+# 敏感配置文件
+config.js
+
+# 其他常見的忽略文件
+.DS_Store
+node_modules/
+.env
+*.log

@@ -22,8 +22,8 @@ Pi.authenticate(scopes, onIncompletePaymentFound)
         document.getElementById('non-pi-user').style.display = 'block';
     });
 
-// Wallet address
-const walletAddress = "GBFSZO7SFB6LBAN62DSWG56I7L2QYUUHT64R43IADIHEY2NRG3QVKT4W";
+// Wallet address from config file
+const walletAddress = CONFIG.WALLET_ADDRESS;
 
 // Get modal instance
 const qrModal = new bootstrap.Modal(document.getElementById('qrModal'));
