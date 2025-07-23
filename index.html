@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beggars around the world at Pi Network.全球乞丐網，旨在集結最微弱的貢獻開創新視界">
+    <meta name="keywords" content="Beggar,乞丐,丐幫,捐贈,picoin,pi network,develop,pi browser">
+    <meta name="author" content="yeh2020">
+    <title>Beggars</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <!-- Non-Pi user section -->
+        <div id="non-pi-user" style="display: none;">
+            <h2>您尚未註冊成為 Pi 用戶</h2>
+            <p>請下載安裝 Pi App 和 Pi Browser 並註冊為 Pi 用戶</p>
+            <div>
+                <h4>Pi App</h4>
+                <a href="https://play.google.com/store/apps/details?id=com.blockchainvault" target="_blank">
+                    <img src="img/google-play.png" alt="Google Play" width="150">
+                </a>
+                <a href="https://apps.apple.com/us/app/pi-network/id1445472541" target="_blank">
+                    <img src="img/apple-store.png" alt="App Store" width="150">
+                </a>
+            </div>
+            <div>
+                <h4>Pi Browser</h4>
+                <a href="https://play.google.com/store/apps/details?id=pi.browser" target="_blank">
+                    <img src="img/google-play.png" alt="Google Play" width="150">
+                </a>
+                <a href="https://apps.apple.com/us/app/pi-browser/id1560911608" target="_blank">
+                    <img src="img/apple-store.png" alt="App Store" width="150">
+                </a>
+            </div>
+        </div>
+
+        <!-- Pi user section -->
+        <div id="pi-user" style="display: none; text-align: center;">
+            <img src="img/pi-logo.png" alt="Pi Logo" width="100">
+            <h2 id="welcome-message"></h2>
+            <div class="flashing-message">請支付 1 Pi 救助我</div>
+            <button id="show-qr" class="btn btn-primary">顯示 QR 碼</button>
+        </div>
+
+        <!-- QR code modal -->
+        <div class="modal fade" id="qrModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <canvas id="qr-canvas" width="200" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
