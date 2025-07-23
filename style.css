@@ -1,18 +1,240 @@
+/* 基本樣式 */
+* {
+    box-sizing: border-box;
+}
+
 body {
     background-image: url('img/background.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
 }
 
+/* 手機容器 */
+.mobile-container {
+    padding: 10px;
+    max-width: 100%;
+    width: 100%;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+
+/* 卡片樣式 */
+.mobile-card {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-card .card-body {
+    padding: 30px 20px;
+}
+
+/* 應用商店徽章 */
+.store-badge {
+    width: 130px;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+}
+
+.store-badge:hover {
+    transform: scale(1.05);
+}
+
+/* Pi Logo */
+.pi-logo {
+    width: 100px;
+    height: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* 閃爍訊息 */
 .flashing-message {
-    animation: flash 1s infinite;
+    animation: flash 1.5s infinite;
     font-size: 24px;
-    color: red;
-    margin: 20px 0;
+    font-weight: bold;
+    color: #ff4444;
+    margin: 25px 0;
+    text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 68, 68, 0.3);
 }
 
+/* 錢包地址文字 */
+.wallet-address-text {
+    font-size: 11px;
+    word-break: break-all;
+    color: #666;
+    background: rgba(0, 0, 0, 0.05);
+    padding: 8px;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+/* QR 碼容器 */
+#qr-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+#qr-canvas {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/* 應用下載區域 */
+.app-download {
+    margin-bottom: 25px;
+}
+
+.app-download h4 {
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* 按鈕樣式 */
+.btn-primary {
+    background: linear-gradient(45deg, #007bff, #0056b3);
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+}
+
+/* 載入指示器 */
+#loading {
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* Modal 優化 */
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px 15px 0 0;
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 15px 15px;
+}
+
+/* 動畫效果 */
 @keyframes flash {
-    0% { opacity: 1; }
-    50% { opacity: 0; }
-    100% { opacity: 1; }
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.02); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* 響應式設計 */
+@media (max-width: 576px) {
+    .mobile-container {
+        padding: 5px;
+    }
+    
+    .mobile-card .card-body {
+        padding: 20px 15px;
+    }
+    
+    .store-badge {
+        width: 110px;
+    }
+    
+    .flashing-message {
+        font-size: 20px;
+        padding: 12px;
+    }
+    
+    .pi-logo {
+        width: 80px;
+    }
+    
+    .btn-primary {
+        padding: 10px 25px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .store-badge {
+        width: 100px;
+    }
+    
+    .flashing-message {
+        font-size: 18px;
+    }
+    
+    .mobile-card .card-body {
+        padding: 15px 10px;
+    }
+}
+
+@media (max-height: 700px) {
+    .content-wrapper {
+        padding: 10px 0;
+        min-height: 95vh;
+    }
+    
+    .mobile-card {
+        margin-bottom: 15px;
+    }
+    
+    .mobile-card .card-body {
+        padding: 20px 15px;
+    }
+}
+
+@media (max-height: 600px) {
+    .flashing-message {
+        font-size: 16px;
+        margin: 15px 0;
+        padding: 10px;
+    }
+    
+    .pi-logo {
+        width: 60px;
+    }
 }
