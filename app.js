@@ -1,18 +1,21 @@
 document.addEventListener('DOMContentLoaded', async function () {
   const welcomeMessage = document.getElementById('welcomeMessage');
 
-  // Function to check if running in Pi Browser
+  // 檢查是否為 Pi Browser
   function isPiBrowser() {
-    // Check for window.Pi object (loaded by Pi SDK)
-    if (window.Pi) {
-      return true;
-    }
-    // Fallback: Check User-Agent for Pi Browser identifiers
-    return /PiBrowser|Pi Network/i.test(navigator.userAgent);
+    // 檢查 User-Agent 是否包含 Pi 相關關鍵詞
+    return /PiBrowser|Pi Network|Pi/i.test(navigator.userAgent);
   }
 
-  // Wait for Pi SDK to load (with timeout)
-  async function waitForPiSDK(timeout = 5000) {
+  // 檢查 Pi Browser
+  if (!isPiBrowser()) {
+    welcomeMessage.textContent = '抱歉，請使用 Pi Browser 瀏覽器進入網站';
+    console.log('非 Pi Browser 環境，User-Agent:', navigator.userAgent);
+    return;
+  }
+
+  // 等待 Pi SDK 載入（最多 3 秒）
+  async function waitForPiSDK(timeout = 3000) {
     const start = Date.now();
     while (!window.Pi && Date.now() - start < timeout) {
       await new Promise(resolve => setTimeout(resolve, 100));
@@ -20,29 +23,32 @@ document.addEventListener('DOMContentLoaded', async function () {
     return !!window.Pi;
   }
 
-  // Check if Pi SDK loaded successfully
+  // 確認 Pi SDK 是否載入
   const piSDKLoaded = await waitForPiSDK();
-  if (!piSDKLoaded || !isPiBrowser()) {
-    welcomeMessage.textContent = '抱歉，請使用Pi Browser瀏覽器進入網站';
+  if (!piSDKLoaded) {
+    welcomeMessage.textContent = '無法載入 Pi SDK，請檢查網路或稍後再試';
+    console.log('Pi SDK 載入失敗，User-Agent:', navigator.userAgent);
     return;
   }
 
   try {
-    // Initialize Pi Network SDK
+    // 初始化 Pi Network SDK
+    // 若在沙盒環境測試，取消以下註解並使用 sandbox: true
+    // Pi.init({ version: '2.0', sandbox: true });
     Pi.init({ version: '2.0' });
 
-    // Authenticate user and retrieve username
+    // 認證用戶並獲取用戶名
     const scopes = ['username'];
     function onIncompletePaymentFound(payment) {
-      console.log('Incomplete payment found:', payment);
-      // Handle incomplete payments if needed (e.g., notify server)
+      console.log('發現未完成支付:', payment);
+      // 可選：處理未完成支付
     }
 
     const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
     const username = auth.user.username;
     welcomeMessage.textContent = `歡迎 ${username} 進入網站`;
   } catch (error) {
-    console.error('Authentication or SDK error:', error);
-    welcomeMessage.textContent = '無法驗證用戶，請稍後再試';
+    console.error('Pi SDK 初始化或認證失敗:', error);
+    welcomeMessage.textContent = '無法驗證用戶，請檢查是否已登錄 Pi Browser 或稍後再試';
   }
 });
