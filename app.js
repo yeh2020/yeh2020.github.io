@@ -1,19 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
   const welcomeMessage = document.getElementById('welcomeMessage');
 
-  // 檢查是否為 Pi Browser
-  function isPiBrowser() {
-    // 檢查 User-Agent 是否包含 Pi 相關關鍵詞
-    return /PiBrowser|Pi Network|Pi/i.test(navigator.userAgent);
-  }
-
-  // 檢查 Pi Browser
-  if (!isPiBrowser()) {
-    welcomeMessage.textContent = '抱歉，請使用 Pi Browser 瀏覽器進入網站';
-    console.log('非 Pi Browser 環境，User-Agent:', navigator.userAgent);
-    return;
-  }
-
   // 等待 Pi SDK 載入（最多 3 秒）
   async function waitForPiSDK(timeout = 3000) {
     const start = Date.now();
@@ -23,11 +10,13 @@ document.addEventListener('DOMContentLoaded', async function () {
     return !!window.Pi;
   }
 
-  // 確認 Pi SDK 是否載入
-  const piSDKLoaded = await waitForPiSDK();
-  if (!piSDKLoaded) {
-    welcomeMessage.textContent = '無法載入 Pi SDK，請檢查網路或稍後再試';
-    console.log('Pi SDK 載入失敗，User-Agent:', navigator.userAgent);
+  // 檢查是否為 Pi Browser
+  const isPiBrowser = await waitForPiSDK();
+  console.log(`window.Pi 狀態: ${isPiBrowser ? '存在，確認為 Pi Browser' : '不存在，判定為非 Pi Browser'}`);
+  console.log(`User-Agent: ${navigator.userAgent}`);
+
+  if (!isPiBrowser) {
+    welcomeMessage.textContent = '抱歉，請使用 Pi Browser 瀏覽器進入網站';
     return;
   }
 
@@ -47,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const auth = await Pi.authenticate(scopes, onIncompletePaymentFound);
     const username = auth.user.username;
     welcomeMessage.textContent = `歡迎 ${username} 進入網站`;
+    console.log(`認證成功，用戶名: ${username}`);
   } catch (error) {
     console.error('Pi SDK 初始化或認證失敗:', error);
     welcomeMessage.textContent = '無法驗證用戶，請檢查是否已登錄 Pi Browser 或稍後再試';
