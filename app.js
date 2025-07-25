@@ -2,11 +2,6 @@ document.addEventListener('DOMContentLoaded', async function () {
   const welcomeMessage = document.getElementById('welcomeMessage');
 
   try {
-    // 初始化 Pi Network SDK
-    // 若在沙盒環境測試，取消以下註解並使用 sandbox: true
-    // Pi.init({ version: '2.0', sandbox: true });
-    Pi.init({ version: '2.0' });
-
     // 認證用戶並獲取用戶名
     const scopes = ['username'];
     function onIncompletePaymentFound(payment) {
