@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beggars Video</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        video {
+            max-width: 100%;
+            max-height: 100%;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <video id="introVideo" controls autoplay playsinline poster="https://cdn.beggars.app/img/background.jpg" src="https://cdn.beggars.app/videos/beggars.mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <script>
+        const video = document.getElementById('introVideo');
+        video.play().catch(error => {
+            console.log("Autoplay was prevented by the browser. User can start it manually.", error);
+        });
+        video.addEventListener('ended', function() {
+            if (window.location.hostname.includes('testnet')) {
+                window.location.href = 'https://testnet.beggars.app';
+            } else {
+                window.location.href = 'https://beggars.app';
+            }
+        });
+    </script>
+</body>
+</html>
